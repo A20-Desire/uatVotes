@@ -25,6 +25,8 @@ Set the following variables when running the server:
 - `PAYSTACK_CALLBACK` – public URL for payment verification callback
 - `JWT_SECRET` – secret used to sign authentication tokens
 - `PORT` – (optional) port for the server
+- `GOOGLE_CLIENT_ID` – Google OAuth client ID
+- `GOOGLE_CLIENT_SECRET` – Google OAuth client secret
 
 ## Frontend
 
@@ -35,6 +37,8 @@ Static pages are under `secure-voting-website/`:
 - `style.css` – shared stylesheet for a cleaner layout
 
 Open these pages in a browser served from any HTTP server (e.g., `live-server`).
+
+The login page also provides a **Login with Google** button that initiates an OAuth flow via `/api/auth/google`.
 
 ## Payment Endpoint
 

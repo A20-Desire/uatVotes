@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const passport = require('passport');
 
 router.post('/register', async (req, res) => {
   try {
@@ -22,6 +23,13 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+});
+
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
+  const token = jwt.sign({ id: req.user._id, isAdmin: req.user.isAdmin }, process.env.JWT_SECRET);
+  res.redirect(`/?token=${token}`);
 });
 
 module.exports = router;
