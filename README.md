@@ -32,6 +32,7 @@ Static pages are under `secure-voting-website/`:
 
 - `index.html` – login/register and list available polls
 - `admin.html` – admin interface to create polls, manage candidates and **toggle result visibility**
+- `style.css` – shared stylesheet for a cleaner layout
 
 Open these pages in a browser served from any HTTP server (e.g., `live-server`).
 
