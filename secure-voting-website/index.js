@@ -34,4 +34,14 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
   });
 });
 
-fetchPolls();
+document.getElementById('googleLogin').addEventListener('click', () => {
+  window.location.href = '/api/auth/google';
+});
+
+const params = new URLSearchParams(window.location.search);
+if (params.get('token')) {
+  token = params.get('token');
+  fetchPolls();
+} else {
+  fetchPolls();
+}
