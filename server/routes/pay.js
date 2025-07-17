@@ -8,14 +8,17 @@ const PAYSTACK_CALLBACK = process.env.PAYSTACK_CALLBACK;
 
 router.post('/', auth(), async (req, res) => {
   try {
-    const { email, voteId } = req.body;
+    const { email, voteId, quantity } = req.body;
     const vote = await Vote.findById(voteId);
     if (!vote) return res.status(404).json({ message: 'Vote not found' });
+
+    vote.quantity = quantity || 1;
+    await vote.save();
 
     const response = await axios.post('https://api.paystack.co/transaction/initialize',
       {
         email,
-        amount: 10000, // 100 Naira in kobo
+        amount: (quantity || 1) * 10000, // 100 Naira per vote in kobo
         callback_url: PAYSTACK_CALLBACK,
         metadata: { voteId },
       },

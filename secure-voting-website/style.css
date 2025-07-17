@@ -1,7 +1,7 @@
 :root {
-  --primary: #4a6cf7;
-  --accent: #ff6b6b;
-  --background: #f5f5fa;
+  --primary: #008000;
+  --accent: #ff0000;
+  --background: #ffffff;
   --card-bg: #ffffff;
   --text-color: #333;
 }
@@ -81,4 +81,32 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.candidate {
+  display: flex;
+  margin: 10px 0;
+}
+
+.candidate img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.candidate-info {
+  flex: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+#message {
+  margin-top: 10px;
+  color: var(--primary);
+  font-weight: bold;
+  text-align: center;
 }

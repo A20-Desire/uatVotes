@@ -4,6 +4,7 @@ const voteSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   poll: { type: mongoose.Schema.Types.ObjectId, ref: 'Poll' },
   candidate: { type: mongoose.Schema.Types.ObjectId, ref: 'Candidate' },
+  quantity: { type: Number, default: 1 },
   paid: { type: Boolean, default: false },
 });
 
