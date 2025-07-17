@@ -72,9 +72,13 @@ async function buyVote(pollId, candidateId) {
     },
     body: JSON.stringify({ email: username, voteId: vote._id, quantity: Number(qty) })
   });
-  if (payRes.ok) {
+  const payData = await payRes.json();
+  if (payRes.ok && payData.data && payData.data.authorization_url) {
+    localStorage.setItem('voteId', vote._id);
+    window.location.href = payData.data.authorization_url;
+  } else {
     document.getElementById('message').classList.remove('hidden');
-    document.getElementById('message').textContent = 'Payment successful';
+    document.getElementById('message').textContent = 'Unable to initiate payment';
   }
 }
 

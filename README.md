@@ -22,7 +22,7 @@ Set the following variables when running the server:
 
 - `DB_URI` – MongoDB connection string
 - `PAYSTACK_SECRET` – Paystack secret key
-- `PAYSTACK_CALLBACK` – public URL for payment verification callback
+- `PAYSTACK_CALLBACK` – public URL for payment verification callback (e.g. `http://localhost:8080/secure-voting-website/paystack.html`)
 - `JWT_SECRET` – secret used to sign authentication tokens
 - `PORT` – (optional) port for the server
 - `GOOGLE_CLIENT_ID` – Google OAuth client ID
@@ -34,6 +34,7 @@ Static pages are under `secure-voting-website/`:
 
 - `index.html` – login/register and list available polls
 - `admin.html` – admin interface to create polls, manage candidates and **toggle result visibility**
+- `paystack.html` – page users are redirected to after completing payment
 - `style.css` – shared stylesheet for a cleaner layout
 
 Open these pages in a browser served from any HTTP server (e.g., `live-server`).
